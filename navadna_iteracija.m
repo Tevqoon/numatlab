@@ -1,4 +1,4 @@
-function [x, X, k] = navadna_iteracija(f, pribl, eps, koraki, target, ultimate)
+function [x, X, k] = navadna_iteracija(f, pribl, eps, koraki, target)
 
 switch nargin
     case 3
