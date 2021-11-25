@@ -1,11 +1,14 @@
-function [x, X, k] = navadna_iteracija(f, pribl, eps, koraki, target)
+function [x, X, k] = navadna_iteracija(f, pribl, eps, koraki, target, ultimate)
 
 switch nargin
     case 3
+        % Koraki
         koraki = eps;
         target = inf;
         eps = -inf;
-    
+    case 4
+        % epsilon in tarča
+        target = koraki;
 end
 
     X = pribl;
@@ -13,7 +16,7 @@ end
         X(i) = f(X(i-1));
         if abs(X(i) - X(i-1)) < eps 
             break;
-        elseif abs(X(i) - target) <  eps
+        elseif abs(X(i) - target) < eps
             break;
         end
     end
