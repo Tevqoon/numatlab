@@ -1,4 +1,4 @@
-function [inner, outer, pos_curv, neg_curv] = circlecross(x,y)
+function [inner, outer, curv] = circlecross(x,y)
 
 distance = conv(x, x) + conv(y, y);
 n = length(distance);
@@ -10,12 +10,11 @@ outer = roots(distance - coeff);
 dx = polyder(x);
 dy = polyder(y);
 ddx = polyder(dx);
-ddy = polyder(y);
+ddy = polyder(dy);
 
 top = sum_poly_coeff(conv(dx, ddy), -conv(dy, ddx));
-bot = sum_poly_coeff(conv(dx,dx), conv(dy,dy));
+bot = sum_poly_coeff(conv(dx, dx), conv(dy,dy));
 
-pos_curv = roots(sum_poly_coeff(conv(top, top), -conv(bot, conv(bot, bot))));
-neg_curv = roots(sum_poly_coeff(conv(top, top), conv(bot, conv(bot, bot))));
+curv = lfilter(roots(sum_poly_coeff(conv(top, top), -conv(bot, conv(bot, bot)))), inbounds(0,1));
 
 end

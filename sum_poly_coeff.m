@@ -9,7 +9,7 @@ if dif > 0
     new_x2 = [zeros(1, dif) x2];
 else
     new_x1 = [zeros(1, -dif) x1];
-    new_x2 = x2
+    new_x2 = x2;
 end
 
 coeff_sum = new_x1 + new_x2;
