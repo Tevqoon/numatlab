@@ -1,4 +1,4 @@
-function [p] = hornerounder(a, x, b, m)
+ function [p] = hornerounder(a, x, b, m)
 
 switch nargin
     case 2
